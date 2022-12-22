@@ -1,0 +1,42 @@
+﻿@model ShoppingCart.ViewModels.CategorieViewModel
+@*@model ShoppingCart.Models*@
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container p-4">
+    <div class="row p-3">
+        <div class="col-6">
+<h2 class="text-primary">Liste des Categories</h2>
+            <a class="btn btn-primary" asp-action="CreateUpdate" asp-controller="Categorie">Nouvelle catégorie</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Display Order</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Kategories) {
+        <tr>
+            <td>@item.Nom</td>
+            <td>@item.DisplayOrder</td>
+            <td role="group">
+                <a asp-action="CreateUpdate" asp-controller="categorie" asp-route-id="@item.Id">Edit</a>
+                <a asp-action="Delete" asp-controller="categorie" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
